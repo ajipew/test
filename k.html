@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>R-Well Spa & Massage | Relaxation & Wellness</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" />
+
+  <style>
+    :root {
+      --primary-color: #6a4eff;
+      --secondary-color: #8a7bff;
+      --dark-color: #2a2a72;
+      --light-color: #f8f9fa;
+      --accent-color: #ff7eb9;
+      --text-dark: #333;
+      --text-light: #fff;
+    }
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background-color: var(--light-color);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Navbar styles */
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--text-light);
+    }
+
+    .nav-link {
+      color: rgba(255,255,255,0.8);
+      font-weight: 500;
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      border-radius: 50px;
+      padding: 0.5rem 1.5rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(106, 78, 255, 0.3);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+      color: var(--text-light);
+      padding: 5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      opacity: 0.2;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    /* Brands Section */
+    .brands-section {
+      padding: 2rem 0;
+      background-color: #fff;
+    }
+
+    .brand-logo {
+      height: 40px;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      filter: grayscale(100%);
+      max-width: 150px;
+    }
+
+    .brand-logo:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+      transform: scale(1.1);
+    }
+
+    /* Section titles */
+    .section-title {
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--primary-color);
+    }
+
+    /* Service boxes */
+    .service-box {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 2rem 1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .service-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(106, 78, 255, 0.1);
+      border-color: var(--primary-color);
+    }
+
+    .service-icon {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
+    }
+
+    .service-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Products section */
+    .popular-products {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      padding: 4rem 0;
+    }
+
+    .product-card {
+      background-color: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-price {
+      color: var(--primary-color);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    /* Pricing section */
+    .pricing-section {
+      background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+      padding: 4rem 0;
+      color: #fff;
+    }
+
+    .pricing-table {
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .pricing-table th {
+      background-color: rgba(255,255,255,0.2);
+      font-weight: 600;
+      padding: 1rem;
+    }
+
+    .pricing-table td {
+      padding: 1rem;
+    }
+
+    .pricing-table tr:nth-child(even) {
+      background-color: rgba(255,255,255,0.05);
+    }
+
+    .pricing-table tr:hover {
+      background-color: rgba(255,255,255,0.15);
+    }
+
+    /* Testimonials */
+    .testimonial-section {
+      padding: 4rem 0;
+      background-color: #fff;
+    }
+
+    .testimonial-card {
+      background-color: #f8f9fa;
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 1rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 4rem;
+      color: rgba(106, 78, 255, 0.1);
+      font-family: serif;
+      line-height: 1;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      z-index: 1;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+    }
+
+    /* Footer styles */
+    .footer {
+      background-color: var(--dark-color);
+      color: #fff;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer h3 {
+      margin-bottom: 1rem;
+    }
+
+    .footer p {
+      font-size: 0.9rem;
+    }
+
+    .footer-links h5 {
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .footer-links h5::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 30px;
+      height: 2px;
+      background-color: var(--accent-color);
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.7);
+      display: block;
+      margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+      transform: translateX(5px);
+    }
+
+    .social-icons a {
+      color: #fff;
+      background-color: rgba(255,255,255,0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      background-color: var(--accent-color);
+      transform: translateY(-3px);
+    }
+
+    /* Responsive adjustments */
+    @media(max-width: 768px){
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+    }
+    /* Additional styles for album cards (if needed) */
+    .service-photo {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+    .album-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+      height: 250px;
+    }
+    .album-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    .album-img-wrapper {
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
+    .album-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .album-card:hover .album-img {
+      transform: scale(1.1);
+    }
+    .album-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.3));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .album-card:hover .album-overlay {
+      opacity: 1;
+    }
+    .album-content {
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      color: white;
+      transition: all 0.4s ease;
+      opacity: 0;
+    }
+    .album-card:hover .album-content {
+      bottom: 0;
+      opacity: 1;
+    }
+    .album-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+    .album-content p {
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+    }body{margin-top:20px;
+background:#eee;
+}
+.single_advisor_profile {
+    position: relative;
+    margin-bottom: 50px;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    z-index: 1;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 0.25rem 1rem 0 rgba(47, 91, 234, 0.125);
+    box-shadow: 0 0.25rem 1rem 0 rgba(47, 91, 234, 0.125);
+}
+.single_advisor_profile .advisor_thumb {
+    position: relative;
+    z-index: 1;
+    border-radius: 15px 15px 0 0;
+    margin: 0 auto;
+    padding: 30px 30px 0 30px;
+    background-color: #6a4eff;
+    overflow: hidden;
+}
+.single_advisor_profile .advisor_thumb::after {
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    position: absolute;
+    width: 150%;
+    height: 80px;
+    bottom: -45px;
+    left: -25%;
+    content: "";
+    background-color: #ffffff;
+    -webkit-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+}
+@media only screen and (max-width: 575px) {
+    .single_advisor_profile .advisor_thumb::after {
+        height: 160px;
+        bottom: -90px;
+    }
+}
+.single_advisor_profile .advisor_thumb .social-info {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    bottom: 0;
+    right: 30px;
+    text-align: right;
+}
+.single_advisor_profile .advisor_thumb .social-info a {
+    font-size: 14px;
+    color: #020710;
+    padding: 0 5px;
+}
+.single_advisor_profile .advisor_thumb .social-info a:hover,
+.single_advisor_profile .advisor_thumb .social-info a:focus {
+    color: #3f43fd;
+}
+.single_advisor_profile .advisor_thumb .social-info a:last-child {
+    padding-right: 0;
+}
+.single_advisor_profile .single_advisor_details_info {
+    position: relative;
+    z-index: 1;
+    padding: 30px;
+    text-align: right;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    border-radius: 0 0 15px 15px;
+    background-color: #ffffff;
+}
+.single_advisor_profile .single_advisor_details_info::after {
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    position: absolute;
+    z-index: 1;
+    width: 50px;
+    height: 3px;
+    background-color: #3f43fd;
+    content: "";
+    top: 12px;
+    right: 30px;
+}
+.single_advisor_profile .single_advisor_details_info h6 {
+    margin-bottom: 0.25rem;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .single_advisor_profile .single_advisor_details_info h6 {
+        font-size: 14px;
+    }
+}
+.single_advisor_profile .single_advisor_details_info p {
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .single_advisor_profile .single_advisor_details_info p {
+        font-size: 12px;
+    }
+}
+.single_advisor_profile:hover .advisor_thumb::after,
+.single_advisor_profile:focus .advisor_thumb::after {
+    background-color: #6a4eff;
+}
+.single_advisor_profile:hover .advisor_thumb .social-info a,
+.single_advisor_profile:focus .advisor_thumb .social-info a {
+    color: #ffffff;
+}
+.single_advisor_profile:hover .advisor_thumb .social-info a:hover,
+.single_advisor_profile:hover .advisor_thumb .social-info a:focus,
+.single_advisor_profile:focus .advisor_thumb .social-info a:hover,
+.single_advisor_profile:focus .advisor_thumb .social-info a:focus {
+    color: #ffffff;
+}
+.single_advisor_profile:hover .single_advisor_details_info,
+.single_advisor_profile:focus .single_advisor_details_info {
+    background-color: #6a4eff;
+}
+.single_advisor_profile:hover .single_advisor_details_info::after,
+.single_advisor_profile:focus .single_advisor_details_info::after {
+    background-color: #ffffff;
+}
+.single_advisor_profile:hover .single_advisor_details_info h6,
+.single_advisor_profile:focus .single_advisor_details_info h6 {
+    color: #ffffff;
+}
+.single_advisor_profile:hover .single_advisor_details_info p,
+.single_advisor_profile:focus .single_advisor_details_info p {
+    color: #ffffff;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--primary-color);">
+    <div class="container">
+      <a class="navbar-brand" href="#">R-WELL</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        </ul>
+        <button class="btn btn-primary ms-lg-3">Book Appointment</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-content">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <h1 class="hero-title">Experience Ultimate Relaxation & Wellness</h1>
+          <p class="hero-subtitle">Indulge in our premium spa treatments designed to rejuvenate your body, mind, and soul.</p>
+          <div class="d-flex gap-3">
+            <a href="#" class="btn btn-primary">Our Services</a>
+            <a href="#" class="btn btn-outline-light">Book Now</a>
+          </div>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block text-center">
+          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Spa Treatment" class="img-fluid rounded-3 shadow" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brands Section -->
+  <section class="brands-section">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-center align-items-center gap-4 py-3">
+        <img src="https://via.placeholder.com/150x60?text=LOREAL" alt="L'Oreal" class="brand-logo" />
+        <img src="https://via.placeholder.com/150x60?text=MAGIC" alt="Magic" class="brand-logo" />
+        <img src="https://via.placeholder.com/150x60?text=Sensible" alt="Sensible" class="brand-logo" />
+        <img src="https://via.placeholder.com/150x60?text=bluesky" alt="Bluesky" class="brand-logo" />
+        <img src="https://via.placeholder.com/150x60?text=MATRIX" alt="Matrix" class="brand-logo" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center section-title mb-4">Our Premium Services</h2>
+    <p class="text-center mb-5">Choose from our wide range of professional spa and wellness services</p>
+    
+    <div class="row g-4">
+      <!-- Service Card -->
+      <div class="col-md-4 col-sm-6">
+        <div class="service-box h-100">
+          <img src="https://hastehair.com/wp-content/uploads/2024/09/protein-treatments.jpg" alt="Hair Treatment" class="img-fluid rounded service-photo mb-3" />
+          <h4 class="service-title">Hair Treatments</h4>
+          <p>Professional hair relaxing treatments for smooth, manageable hair.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-4 col-sm-6">
+        <div class="service-box h-100">
+          <img src="https://scontent.fcrk4-1.fna.fbcdn.net/v/t39.30808-6/488750192_575612658870317_7141883129104812117_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFJn3UVJ34IKocFSw_aYT-guZbx9SVhOdm5lvH1JWE52byKrlgyOo5b5wKbbcmP4dOVfke_95Y1T07EqClD8viJ&_nc_ohc=tXYIINMpt7AQ7kNvwEhol2E&_nc_oc=AdnkZefeuLi99xsQnrYdM4GO6Ioml6_1cigO9F5HjOtvxchd7fTGosdDimyKK2uBv_Q&_nc_zt=23&_nc_ht=scontent.fcrk4-1.fna&_nc_gid=J3ix-adO2q4awbDI_PL9-A&oh=00_AfMhBZgsME008k9xUeEOkB8BEIQUApRFgHT0KwnKM7SNyA&oe=68471FCB" alt="Nail Care" class="img-fluid rounded service-photo mb-3" />
+          <h4 class="service-title">Nail Cares</h4>
+          <p>Luxurious manicure and pedicure services for beautiful nails.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-4 col-sm-6">
+        <div class="service-box h-100">
+          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Massage" class="img-fluid rounded service-photo mb-3" />
+          <h4 class="service-title">Massage Theraphy</h4>
+          <p>Traditional Filipino massage technique for deep relaxation.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-4 col-sm-6">
+        <div class="service-box h-100">
+          <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Hair Treatment" class="img-fluid rounded service-photo mb-3" />
+          <h4 class="service-title">Aesthetics</h4>
+          <p>Revitalizing treatments for damaged or stressed hair.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-4 col-sm-6">
+        <div class="service-box h-100">
+          <img src="https://images.unsplash.com/photo-1544168213-3f9c6f4b6b9a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Massage" class="img-fluid rounded service-photo mb-3" />
+          <h4 class="service-title">Eyelash Extension</h4>
+          <p>Various massage techniques to relieve stress and tension.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-4 col-sm-6">
+        <div class="service-box h-100">
+          <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Kids Services" class="img-fluid rounded service-photo mb-3" />
+          <h4 class="service-title">Haircut</h4>
+          <p>Gentle treatments specially designed for younger clients.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Popular Products -->
+  <section class="popular-products">
+    <div class="container">
+      <h2 class="text-center section-title mb-4">Our Best Selling Products</h2>
+      <p class="text-center mb-5">Premium quality products for your beauty and wellness needs</p>
+      
+      <div class="row g-4" id="productList">
+        <!-- Dynamic products will be inserted here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing-section">
+    <div class="container">
+      <h2 class="text-center section-title mb-4">Service Pricing</h2>
+      <p class="text-center mb-4">Competitive pricing for our premium services</p>
+      
+      <div class="pricing-table">
+        <table class="table table-hover text-white">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Service Name</th>
+              <th>Duration</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody id="pricingTable">
+            <!-- Dynamic pricing data -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonial-section">
+    <div class="container">
+      <h2 class="text-center section-title mb-4">What Our Clients Say</h2>
+      <p class="text-center mb-5">Hear from our satisfied customers</p>
+      
+      <div class="row">
+        <!-- Testimonial Cards -->
+        <div class="col-md-4 mb-4">
+          <div class="testimonial-card h-100">
+            <p class="testimonial-text">First time namin ni hubby magpa ventosa massage and i must say na we had a great experience and sobrang narelax kami☺️ we will definetely come back😉 I recommend this massage spa👍.</p>
+            <div class="testimonial-author">- Rose Ann Nicolas Villon </div>
+            <div class="text-warning fs-4">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="testimonial-card h-100">
+            <p class="testimonial-text">We are grateful and thankful for your good service,,, Satisfied customer here.</p>
+            <div class="testimonial-author">- Yda Pastor</div>
+            <div class="text-warning fs-4">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="testimonial-card h-100">
+            <p class="testimonial-text">Luv it!! Very professional.</p>
+            <div class="testimonial-author">- Jennifer Huertas </div>
+            <div class="text-warning fs-4">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Services Albums Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center section-title mb-4">Our Service Gallery</h2>
+    <p class="text-center mb-5">Explore moments of relaxation and transformation</p>
+    
+    <div class="row g-4">
+      <!-- Album 1 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="album-card">
+          <div class="album-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1519735777090-ec97162dc266?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                 alt="Hair Treatments" class="img-fluid album-img">
+            <div class="album-overlay"></div>
+            <div class="album-content">
+              <h3>Hair Care</h3>
+              <p>8 Photos</p>
+              <a href="portfolio.html" class="btn btn-outline-light btn-sm">View Gallery</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Album 2 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="album-card">
+          <div class="album-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1518544864415-ef6d7dd8dbb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                 alt="Nail Services" class="img-fluid album-img">
+            <div class="album-overlay"></div>
+            <div class="album-content">
+              <h3>Nail Artistry</h3>
+              <p>12 Photos</p>
+              <a href="portfolio.html" class="btn btn-outline-light btn-sm">View Gallery</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Album 3 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="album-card">
+          <div class="album-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                 alt="Massage Therapy" class="img-fluid album-img">
+            <div class="album-overlay"></div>
+            <div class="album-content">
+              <h3>Massage Therapy</h3>
+              <p>6 Photos</p>
+              <a href="portfolio.html" class="btn btn-outline-light btn-sm">View Gallery</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Album 4 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="album-card">
+          <div class="album-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                 alt="Spa Treatments" class="img-fluid album-img">
+            <div class="album-overlay"></div>
+            <div class="album-content">
+              <h3>Spa Treatments</h3>
+              <p>10 Photos</p>
+              <a href="portfolio.html" class="btn btn-outline-light btn-sm">View Gallery</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Album 5 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="album-card">
+          <div class="album-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1544168213-3f9c6f4b6b9a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                 alt="Facials" class="img-fluid album-img">
+            <div class="album-overlay"></div>
+            <div class="album-content">
+              <h3>Facial Care</h3>
+              <p>9 Photos</p>
+              <a href="portfolio.html" class="btn btn-outline-light btn-sm">View Gallery</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Album 6 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="album-card">
+          <div class="album-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                 alt="Kids Services" class="img-fluid album-img">
+            <div class="album-overlay"></div>
+            <div class="album-content">
+              <h3>Kids Services</h3>
+              <p>5 Photos</p>
+              <a href="portfolio.html" class="btn btn-outline-light btn-sm">View Gallery</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-8 col-lg-6">
+        <!-- Section Heading-->
+        <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+          <h3>Our Creative <span> Team</span></h3>
+          <p>Appland is completely creative, lightweight, clean &amp; super responsive app landing page.</p>
+          <div class="line"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Single Advisor-->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+          <!-- Team Thumb-->
+          <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+            <!-- Social Info-->
+            <div class="social-info"></div>
+          </div>
+          <!-- Team Details-->
+          <div class="single_advisor_details_info">
+            <h6>Jocelyn</h6>
+            <p class="designation">Set a role here</p>
+          </div>
+        </div>
+      </div>
+      <!-- Single Advisor-->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+          <!-- Team Thumb-->
+          <div class="advisor_thumb"><img src="https://i.imgur.com/ILqPJEJ.png" alt="">
+            <!-- Social Info-->
+            <div class="social-info"></div>
+          </div>
+          <!-- Team Details-->
+          <div class="single_advisor_details_info">
+            <h6>Mark Dexter Naval</h6>
+            <p class="designation">Set a role here</p>
+          </div>
+        </div>
+      </div>
+      <!-- Single Advisor-->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+          <!-- Team Thumb-->
+          <div class="advisor_thumb"><img src="https://i.imgur.com/crEI0aM.jpeg" alt="">
+            <!-- Social Info-->
+            <div class="social-info"></div>
+          </div>
+          <!-- Team Details-->
+          <div class="single_advisor_details_info">
+            <h6>Maet</h6>
+            <p class="designation">Set a role here</p>
+          </div>
+        </div>
+      </div>
+      <!-- Single Advisor-->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+          <!-- Team Thumb-->
+          <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
+            <!-- Social Info-->
+            <div class="social-info"></div>
+          </div>
+          <!-- Team Details-->
+          <div class="single_advisor_details_info">
+            <h6>Lani</h6>
+            <p class="designation">Set a role here</p>
+          </div>
+        </div>
+      </div>
+      <!-- Single Advisor-->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+          <!-- Team Thumb-->
+          <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+            <!-- Social Info-->
+            <div class="social-info"></div>
+          </div>
+          <!-- Team Details-->
+          <div class="single_advisor_details_info">
+            <h6>Hanna</h6>
+            <p class="designation">Set a role here</p>
+          </div>
+        </div>
+      </div>
+      <!-- Single Advisor-->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+          <!-- Team Thumb-->
+          <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+            <!-- Social Info-->
+            <div class="social-info"></div>
+          </div>
+          <!-- Team Details-->
+          <div class="single_advisor_details_info">
+            <h6>Jess</h6>
+            <p class="designation">Set a role here</p>
+          </div>
+        </div>
+      </div>
+      <!-- Single Advisor-->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+          <!-- Team Thumb-->
+          <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+            <!-- Social Info-->
+            <div class="social-info"></div>
+          </div>
+          <!-- Team Details-->
+          <div class="single_advisor_details_info">
+            <h6>Rosel</h6>
+            <p class="designation">Set a role here</p>
+          </div>
+        </div>
+      </div>
+      <!-- Single Advisor-->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+          <!-- Team Thumb-->
+          <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
+            <!-- Social Info-->
+            <div class="social-info"></div>
+          </div>
+          <!-- Team Details-->
+          <div class="single_advisor_details_info">
+            <h6>Niloy Islam</h6>
+            <p class="designation">Marketing Manager</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+  <!-- Call to Action -->
+  <section class="py-5" style="background-color: var(--accent-color); color: #fff;">
+    <div class="container text-center py-4">
+      <h2 class="mb-4">Ready to Experience Ultimate Relaxation?</h2>
+      <p class="lead mb-4">Book your appointment today and receive 10% off your first visit!</p>
+      <a href="#" class="btn btn-light btn-lg px-5">Book Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4">
+          <h3 class="mb-3">R-WELL</h3>
+          <p>Your premier destination for relaxation, beauty, and wellness services. We're committed to providing exceptional care and results.</p>
+          <div class="social-icons mt-3">
+            <a href="https://web.facebook.com/RwellSalonandSpa" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-4">
+          <h5>Services</h5>
+          <a href="#">Massage</a>
+          <a href="#">Hair Care</a>
+          <a href="#">Nail Care</a>
+          <a href="#">Aesthetics</a>
+          <a href="#">Others</a>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5>Shop</h5>
+          <a href="#">Hair Products</a>
+          <a href="#">Skin Care</a>
+          <a href="#">Massage Oils</a>
+          <a href="#">Gift Cards</a>
+          <a href="#">Bundles</a>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5>Company</h5>
+          <a href="#">About Us</a>
+          <a href="#">Our Team</a>
+          <a href="#">Careers</a>
+          <a href="#">Blog</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="col-lg-2">
+          <h5>Contact</h5>
+          <p><i class="fas fa-map-marker-alt me-2"></i>Brgy. Rizal, Cabugao, Ilocos Sur</p>
+          <p><i class="fas fa-phone me-2"></i>(63) 997-720-295</p>
+          <p><i class="fas fa-envelope me-2"></i>rwellsalonandspa@gmail.com</p>
+        </div>
+      </div>
+      <hr class="mt-4" style="border-color: rgba(255,255,255,0.1);" />
+      <div class="text-center pt-3">
+        <small>© 2025 R-Well Spa & Massage. All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for dynamic content -->
+  <script>
+    // Sample products data
+    const products = [
+      {
+        name: "Bremod Argan Oil",
+        price: 200,
+        image:   
+          "https://scontent.fcrk4-1.fna.fbcdn.net/v/t39.30808-6/504324745_122097573980902475_6230655567478014609_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHAtMm8KyP9OAjT84F0yt8kBzhvmmhn2FQHOG-aaGfYVJ13c3TELhtID6wp9mX4yz9fIwJo1P0krVPXH3dkUVxT&_nc_ohc=tYZ7uLHgelkQ7kNvwF3c1wi&_nc_oc=AdnEzOX9l4ttTnRIQWfmX-PryEW2G4LQhFTNEhic_g5LBpB2F6MAhLlZFe9fcUFelpM&_nc_zt=23&_nc_ht=scontent.fcrk4-1.fna&_nc_gid=RWPZY8LrA0OLWB-0DN7hnw&oh=00_AfMAFueXWIHWi-VHolkBgo6Xw8SQwJUGJwT2GF3YcoexHg&oe=68471481",
+        rating: 5
+      },
+      {
+        name: "Hongthai Herbal Inhaler",
+        price: 150,
+        image:
+          "https://scontent.fcrk2-1.fna.fbcdn.net/v/t39.30808-6/504294598_122097583472902475_5578475085532226648_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHt4HfI0KOT9U7AZ_KM6fTA9qXWgfyv94b2pdaB_K_3hvw9V3TzQF0G_qIuA8Ldc7CF4z9ySKLVZRRpwjla6VDj&_nc_ohc=2z2RjuVDUHsQ7kNvwH2eBgy&_nc_oc=AdkUlMz-JBtaytxz-Doxhg5Z3MTdJnz5_81nqNM2lQXg3rwgnpu-t3LAncv1Bf6lW-8&_nc_zt=23&_nc_ht=scontent.fcrk2-1.fna&_nc_gid=68fZx5g5keMY2ftKcaZQJQ&oh=00_AfNVJKJJzQFz0uo8teRMdM-4tYImMK0awYpowkHnpVLBxA&oe=68472D1F",
+        rating: 4
+      },
+      {
+        name: "Pim Saem Balm Oil(Glass)",
+        price: 120,
+        image:
+          "https://scontent.fcrk4-1.fna.fbcdn.net/v/t39.30808-6/503984083_122097582866902475_2044670879525798812_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGhSn19x00OrA2vwhzNwYG17gYSB3ps3j_uBhIHemzeP6t_5gVO_lBwSbiIV7Zznvypgdp8gkTqcK0NjXOAScO4&_nc_ohc=bdR3iZouYk4Q7kNvwG4duzU&_nc_oc=AdkFcOqGb3oMRx4upDLdt8D5WK4QoalpgDQ5NWqVu6AB4gEAjXJH4k0T5zuStX74WWI&_nc_zt=23&_nc_ht=scontent.fcrk4-1.fna&_nc_gid=KeGPbaqczBZA1Rb8gkJB0A&oh=00_AfMmLGoDhQg5R1VWx8sZDbbISyFavS5Ao_VluFMLxbCv_A&oe=684728C1",
+        rating: 5
+      },
+      {
+        name: "WellHair Hair Mask",
+        price: 300,
+        image:
+          "https://scontent.fcrk4-1.fna.fbcdn.net/v/t39.30808-6/504145914_122097585110902475_2875539282049740013_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHDW5-wc_25yx9-of24oJmcmCft0FlbJ1-YJ-3QWVsnX1hbZNpMtWpSwKOVPGFA8n5nO5W3SFbjlf2-rcQAh3oJ&_nc_ohc=YRd42SqCw1kQ7kNvwEdHJ_g&_nc_oc=AdkcwTUUgDxgUT3dQ4NIjM7LLNMkNsTsbT3PhcHlkAhvPQa_7M2JV5oRoGZLQY-x6kM&_nc_zt=23&_nc_ht=scontent.fcrk4-1.fna&_nc_gid=7llPr1Q8C5inVXr6Ikh2rw&oh=00_AfNsNAXc6GurU8SAGR8BibEFMBKO08As8WaVssveZKft9w&oe=6847303A",
+        rating: 4
+      }
+    ];
+
+    const pricing = [
+      {
+        service: "R-well Royalty Luxe",
+        duration: "2–3 hrs",
+        priceRange: { min: 3499, max: 4999 },
+        notes: "Price depends on hair length"
+      },
+      {
+        service: "R-well Celebrity Luxe",
+        duration: "2–3 hrs",
+        priceRange: { min: 2499, max: 3499 },
+        notes: "Price depends on hair length"
+      },
+      {
+        service: "Loreal Hair Rebond",
+        duration: "5 hrs",
+        priceRange: { min: 3499, max: 4999 },
+        notes: "Price depends on hair length"
+      },
+      {
+        service: "Glam Luxe Super Botox",
+        duration: "3 hrs",
+        priceRange: { min: 1499, max: 1999 },
+        notes: "Price depends on hair length"
+      },
+      {
+        service: "Matrix Hair Rebond",
+        duration: "5 hrs",
+        priceRange: { min: 1999, max: 3499 },
+        notes: "Price depends on hair length"
+      },
+      {
+        service: "Classic Hair Rebond",
+        duration: "4 hrs",
+        priceRange: { min: 999, max: 1999 },
+        notes: "Price depends on hair length"
+      },
+      {
+        service: "Rebond with Brazilian",
+        duration: "6 hrs",
+        priceRange: { min: 1999, max: 2999 },
+        notes: "Price depends on hair length"
+      },
+      {
+        service: "Rebond with Botox",
+        duration: "6 hrs",
+        priceRange: { min: 1499, max: 2499 },
+        notes: "Price depends on hair length"
+      },
+      {
+        service: "Hot Oil",
+        duration: "1 hr",
+        price: 299
+      },
+      {
+        service: "Hair Keratin",
+        duration: "30 mins",
+        price: 499
+      },
+      {
+        service: "Hair Botox",
+        duration: "2 hrs",
+        price: 999
+      },
+      {
+        service: "Brazilian Botox",
+        duration: "2 hrs",
+        price: 999
+      },
+      {
+        service: "Brazilian Blowout",
+        duration: "2 hrs",
+        price: 999
+      },
+      {
+        service: "Kerabond",
+        duration: "3 hrs",
+        price: 1499
+      },
+      {
+        service: "Hair Color",
+        duration: "30 min",
+        price: 499
+      },
+      {
+        service: "Hair Color with Treatment",
+        duration: "2 hrs",
+        price: 799
+      },
+      {
+        service: "Hair Color with Cellophane",
+        duration: "2 hrs",
+        price: 999
+      },
+      {
+        service: "Hair Color and Rebond",
+        duration: "5 hrs",
+        price: 1499
+      },
+      {
+        service: "Cellophane",
+        duration: "2 hrs",
+        price: 499
+      },
+      {
+        service: "Highlights (Men)",
+        duration: "1 hr",
+        price: 299
+      },
+      {
+        service: "Highlights (Women)",
+        duration: "2 hrs",
+        price: 499
+      },{
+        service: "Haircut",
+        duration: "20 mins",
+        price: 100
+      }
+      //Nails
+
+      ,{
+        service: "Manicure",
+        duration: "20 mins",
+        price: 100
+      },{
+        service: "Pedicure",
+        duration: "20 mins",
+        price: 100
+      },{
+        service: "Gel Polish (Classic)",
+        duration: "20 mins",
+        price: 299
+      },{
+        service: "Gel Polish (Bluesky, Coucou)",
+        duration: "20 mins",
+        price: 100
+      },{
+        service: "Gel Removal",
+        duration: "20 mins",
+        price: 200
+      },{
+        service: "Pedicure and Footspa",
+        duration: "20 mins",
+        price: 399
+      },{
+        service: "Polygel Nail Extension",
+        duration: "20 mins",
+        price: 599
+      },{
+        service: "Softgel Nail Extension",
+        duration: "20 mins",
+        price: 499
+      },
+      // Massages
+      
+      {
+        service: "Hotstone Massage",
+        duration: "1 hr",
+        price: 649
+      },{
+        service: "Ventosa Massage",
+        duration: "1 hr",
+        price: 649
+      },{
+        service: " Thai Massage",
+        duration: "1 hr",
+        price: 599
+      },{
+        service: "Swedish Massage",
+        duration: "1 hr",
+        price: 499
+      },{
+        service: "Combi Massage",
+        duration: "1 hr",
+        price: 499
+      },{
+        service: "Shiatsu Massage",
+        duration: "1 hr",
+        price: 499
+      },{
+        service: "Hilot Massage",
+        duration: "1 hr",
+        price: 499
+      },{
+        service: "Back Massage",
+        duration: "30 mins",
+        price: 249
+      },{
+        service: "Hand Massage",
+        duration: "30 mins",
+        price: 249
+      },{
+        service: "Hand Reflexology",
+        duration: "30 mins",
+        price: 249
+      },{
+        service: "Hand and Foot  Massage",
+        duration: "30 mins",
+        price: 249
+      },{
+        service: "Foot Reflex",
+        duration: "30 mins",
+        price: 249
+      }
+      // Aesthetic
+      ,{
+        service: "Eyelash Extension (Regular)",
+        duration: "30 mins",
+        price: 499
+      },{
+        service: "Eyelash Extension (Volume)",
+        duration: "30 mins",
+        price: 599
+      },{
+        service: "Eyelash Perming  ",
+        duration: "30 mins",
+        price: 299
+      },{
+        service: "Hair and Make Up",
+        duration: "30 mins",
+        price: 499
+      }
+      // Others
+
+      ,{
+        service: "Hair Perming",
+        duration: "30 mins",
+        price: 499
+      },{
+        service: "Ear Candling Detox",
+        duration: "30 mins",
+        price: 119
+      }
+      ,{
+        service: "Footspa",
+        duration: "30 mins",
+        price: 299
+      }
+    ];
+
+    // Function to format the price (range or single)
+    function formatPrice(service) {
+      if (service.priceRange) {
+        return `₱${service.priceRange.min.toLocaleString()}–₱${service.priceRange.max.toLocaleString()} (${service.notes})`;
+      }
+      return `₱${service.price.toLocaleString()}`;
+    }
+
+    // Populate products
+    const productList = document.getElementById('productList');
+    products.forEach(prod => {
+      const col = document.createElement('div');
+      col.className = 'col-md-3 col-sm-6 mb-4';
+      col.innerHTML = `
+        <div class="product-card h-100 d-flex flex-column">
+          <img src="${prod.image}" alt="${prod.name}" class="product-image" />
+          <div class="product-body flex-grow-1 d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="product-title">${prod.name}</h5>
+              <div class="text-warning mb-2">
+                ${'<i class="fas fa-star"></i>'.repeat(prod.rating)}
+                ${prod.rating % 1 !== 0 ? '<i class="fas fa-star-half-alt"></i>' : ''}
+              </div>
+              <div class="product-price">₱${prod.price}</div>
+            </div>
+        
+          </div>
+        </div>`;
+      productList.appendChild(col);
+    });
+
+    // Populate pricing table
+    const pricingTable = document.getElementById('pricingTable');
+    pricing.forEach((service, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${service.service}</td>
+        <td>${service.duration}</td>
+        <td>${formatPrice(service)}</td>`;
+      pricingTable.appendChild(row);
+    });
+  </script>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
